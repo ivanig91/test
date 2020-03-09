@@ -18,9 +18,11 @@ public class PantallaHistoria1 implements Screen {
     float y;
     Sound canintro;
     int dificultad;
+    PantallaJuego elJuego;
 
     public PantallaHistoria1(int dificultad) {
         this.dificultad = dificultad;
+        elJuego = new PantallaJuego(dificultad);
     }
 
     @Override
@@ -30,6 +32,7 @@ public class PantallaHistoria1 implements Screen {
         batch = new SpriteBatch();
         historia = new Texture("backgrounds/historia.png");
         y= -historia.getHeight();
+
     }
 
     @Override
@@ -46,7 +49,7 @@ public class PantallaHistoria1 implements Screen {
     public void lanzaJuego(){
         if(y>=Gdx.graphics.getHeight()|| Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)){
             canintro.stop();
-            ((Game) Gdx.app.getApplicationListener()).setScreen(new PantallaJuego(dificultad));
+            ((Game) Gdx.app.getApplicationListener()).setScreen(elJuego);
         }
     }
     public void pintar(){

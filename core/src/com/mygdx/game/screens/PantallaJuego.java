@@ -64,6 +64,8 @@ public class PantallaJuego implements Screen {
 
     public PantallaJuego(int dificultad) {
         this.dificultad = dificultad;
+        misAnimaciones = new Animaciones();
+
     }
 
     public PantallaJuego() {
@@ -75,7 +77,7 @@ public class PantallaJuego implements Screen {
         batch = new SpriteBatch();
 
         if(jugador==null){
-            misAnimaciones = new Animaciones();
+
             velRocas = (Constantes.VELOCIDAD_ROCAS*dificultad);
             velMarcianos = Constantes.VELOCIDAD_MARCIANOS*dificultad;
             jugador = new Nave(new Vector2(10,200),misAnimaciones.getNaveTexturas().get(0),3,5);
@@ -124,7 +126,6 @@ public class PantallaJuego implements Screen {
             fontMarciano.setColor(Color.CYAN);
             fontBoss = new BitmapFont();
             fontBoss.setColor(Color.CYAN);
-
 
 
         }
@@ -205,6 +206,7 @@ public class PantallaJuego implements Screen {
     private void nextLvl(){
         backSong.stop();
         ((Game) Gdx.app.getApplicationListener()).setScreen(new PantallaJuego2(dificultad+1));
+
     }
     private void generaBoss(){
         if(!elBoss.isVivo()){

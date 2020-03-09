@@ -61,7 +61,7 @@ public class PantallaJuego2 extends PantallaJuego implements Screen {
 
     public PantallaJuego2(int dificultad) {
         super(dificultad);
-
+        this.dificultad=dificultad;
 
     }
 
@@ -466,7 +466,7 @@ public class PantallaJuego2 extends PantallaJuego implements Screen {
         if((fondoAux.getFondo().getWidth()+fondoAux.getX())== 0){
             moverFondoAux=fondo.getX()+fondo.getFondo().getWidth();
         }*/
-        fondo.setRotacion((float) (fondo.getRotacion()-0.1));
+        fondo.setRotacion((float) (fondo.getRotacion()+0.1));
     }
     private void texBoss(){
         if(!elBoss.isVivo()){
@@ -525,7 +525,7 @@ public class PantallaJuego2 extends PantallaJuego implements Screen {
 
         font.draw(batch, "Vidas: "+String.valueOf(contaVidas), 50, 20);
         fontMarciano.draw(batch,"Marcianos muertos: "+String.valueOf(contaMarcianos),200,20);
-        fontBoss.draw(batch,"marcianos: "+String.valueOf(marcianos.size),Gdx.graphics.getWidth()-200,20);
+        fontBoss.draw(batch,"marcianos: "+String.valueOf(dificultad),Gdx.graphics.getWidth()-200,20);
         batch.end();
     }
 
