@@ -13,8 +13,9 @@ public class Constantes {
     public static final float AUMENTA_FONDO=2;
     public static final int VIDAS_BOSS=2000;
     public static final int VELOCIDAD_BOSS= 2;
-    public static  final int MARCIANOS_PARA_BOSS=100;
+    public static  final int MARCIANOS_PARA_BOSS=50;
     public static final String IMAGEN_FONDO="backgrounds/background6.jpg";
+    public static final String IMAGEN_FONDO2="backgrounds/background7.jpg";
     public static final float ROTA_FONDO=0;
     public static final int AGUANTA_BALAS=5;
 }

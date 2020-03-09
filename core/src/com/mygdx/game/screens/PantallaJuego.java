@@ -60,9 +60,14 @@ public class PantallaJuego implements Screen {
     Sound backSong;
     int dificultad;
     int constMarcianosBoss;
+    boolean lvlComplete=false;
 
     public PantallaJuego(int dificultad) {
         this.dificultad = dificultad;
+    }
+
+    public PantallaJuego() {
+
     }
 
     @Override
@@ -70,9 +75,10 @@ public class PantallaJuego implements Screen {
         batch = new SpriteBatch();
 
         if(jugador==null){
+            misAnimaciones = new Animaciones();
             velRocas = (Constantes.VELOCIDAD_ROCAS*dificultad);
             velMarcianos = Constantes.VELOCIDAD_MARCIANOS*dificultad;
-            jugador = new Nave(new Vector2(10,200),new Texture("ship/f1.png"),3,5);
+            jugador = new Nave(new Vector2(10,200),misAnimaciones.getNaveTexturas().get(0),3,5);
             moverFondo=0;
             rotaFondo = Constantes.ROTA_FONDO;
             fondo = new Fondo(new Texture(Constantes.IMAGEN_FONDO),moverFondo,0,rotaFondo);
@@ -93,15 +99,18 @@ public class PantallaJuego implements Screen {
 
             soniDisparo = Gdx.audio.newSound(Gdx.files.internal("sounds/disparo.mp3"));
             meDieron = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion.wav"));
-            backSong = Gdx.audio.newSound(Gdx.files.internal("sounds/gorillaz-andromeda-official-audio.mp3"));
+            backSong = Gdx.audio.newSound(Gdx.files.internal("sounds/the-thrill-wiz-khalifa.mp3"));
             backSong.play();
             stateTime= 0f;
             arrayExplosiones = new Array<>();
+
 
             elBoss= new Boss(new Texture("enemy/voxBoss3.png"),Constantes.VIDAS_BOSS,Constantes.VELOCIDAD_BOSS);
             int enX = Gdx.graphics.getWidth()-elBoss.getTextura().getWidth();
             int enY = MathUtils.random(0,Gdx.graphics.getHeight());
             elBoss.setVecConRec(new Vector2(enX,enY));
+
+
 
 
 
@@ -115,7 +124,7 @@ public class PantallaJuego implements Screen {
             fontMarciano.setColor(Color.CYAN);
             fontBoss = new BitmapFont();
             fontBoss.setColor(Color.CYAN);
-            misAnimaciones = new Animaciones();
+
 
 
         }
@@ -159,6 +168,11 @@ public class PantallaJuego implements Screen {
                 ((Game) Gdx.app.getApplicationListener()).setScreen(new PantallaPause(this));
 
             }
+            if(lvlComplete){
+                if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
+                    nextLvl();
+                }
+            }
 
         }else{
             if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)){
@@ -166,7 +180,10 @@ public class PantallaJuego implements Screen {
             }
         }
         moverFondo();
-        enemigosYBoss();
+        if(!lvlComplete){
+            enemigosYBoss();
+        }
+
         moverEnemigos();
         comprobarColisiones();
         disparar();
@@ -180,9 +197,14 @@ public class PantallaJuego implements Screen {
         if(contaMarcianos<=constMarcianosBoss){
             generarEnemigos();
         }else{
-            generaBoss();
+            //generaBoss();
+            lvlComplete=true;
         }
 
+    }
+    private void nextLvl(){
+        backSong.stop();
+        ((Game) Gdx.app.getApplicationListener()).setScreen(new PantallaJuego2(dificultad+1));
     }
     private void generaBoss(){
         if(!elBoss.isVivo()){
@@ -406,7 +428,7 @@ public class PantallaJuego implements Screen {
                 i=1;
             }
         }else{
-                nave.setTextura(misAnimaciones.getExploTexturas().get(1));
+            nave.setTextura(misAnimaciones.getArraySCIFI().get(1));
         }
 
         return i;
@@ -518,6 +540,11 @@ public class PantallaJuego implements Screen {
        }
        if(jugador.getVidas()<=0){
            batch.draw(misAnimaciones.getGameOver(),Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/2);
+           batch.draw(misAnimaciones.getPaktc(),Gdx.graphics.getWidth()/4-50,
+                   Gdx.graphics.getHeight()/2-50);
+       }
+       if(lvlComplete){
+           batch.draw(misAnimaciones.getLvlc(),Gdx.graphics.getWidth()/9.5f,Gdx.graphics.getHeight()/2);
            batch.draw(misAnimaciones.getPaktc(),Gdx.graphics.getWidth()/4-50,
                    Gdx.graphics.getHeight()/2-50);
        }

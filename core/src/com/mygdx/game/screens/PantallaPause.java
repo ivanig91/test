@@ -34,6 +34,10 @@ public class PantallaPause implements Screen {
         this.elJuego = elJuego;
         dificultad=elJuego.getDificultad();
     }
+    public PantallaPause(PantallaJuego2 elJuego) {
+        this.elJuego = elJuego;
+        dificultad=elJuego.getDificultad();
+    }
 
     @Override
     public void show() {

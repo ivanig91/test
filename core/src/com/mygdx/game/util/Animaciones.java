@@ -18,6 +18,7 @@ public class Animaciones {
     private Texture muerteBoss;
     private Texture gameOver;
     private Texture paktc;
+    private Texture lvlc;
 
     public Animaciones() {
 
@@ -44,6 +45,7 @@ public class Animaciones {
         String cad1="000";
         String cad2="00";
         Texture texPlo;
+        /*
         for(int i=0;i<51;i++){
             if(i<10){
                 texPlo = new Texture("explosion/explosion"+cad1+String.valueOf(i)+".png");
@@ -52,7 +54,7 @@ public class Animaciones {
             }
             exploTexturas.add(texPlo);
             exploAnimacion.add(new TextureRegion(texPlo,0,0,texPlo.getWidth(),texPlo.getHeight()));
-        }
+        }*/
         Texture exploSCIFI;
         for(int i=1; i<=15;i++){
             if(i<10){
@@ -63,9 +65,18 @@ public class Animaciones {
             arraySCIFI.add(exploSCIFI);
 
         }
-        muerteBoss = new Texture("enemy/voxBoss.png");
+        muerteBoss = new Texture("enemy/voxBoss3.png");
         gameOver = new Texture("backgrounds/gameover (2).png");
         paktc = new Texture("backgrounds/petc.png");
+        lvlc = new Texture("backgrounds/lvlc.png");
+    }
+
+    public Texture getLvlc() {
+        return lvlc;
+    }
+
+    public void setLvlc(Texture lvlc) {
+        this.lvlc = lvlc;
     }
 
     public ArrayList<Texture> getArraySCIFI() {

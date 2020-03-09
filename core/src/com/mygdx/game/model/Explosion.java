@@ -18,7 +18,7 @@ public class Explosion {
 
     }
     public void mePinto(SpriteBatch batch){
-        batch.draw(textura,posicion.x-200,posicion.y-200);
+        batch.draw(textura,posicion.x-220,posicion.y-220);
     }
 
     public void sumarFrame(){

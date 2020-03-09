@@ -30,8 +30,6 @@ public class PantallaHistoria1 implements Screen {
         batch = new SpriteBatch();
         historia = new Texture("backgrounds/historia.png");
         y= -historia.getHeight();
-
-
     }
 
     @Override
