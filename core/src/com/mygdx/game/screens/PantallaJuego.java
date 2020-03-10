@@ -62,10 +62,11 @@ public class PantallaJuego implements Screen {
     int constMarcianosBoss;
     boolean lvlComplete=false;
 
+
     public PantallaJuego(int dificultad) {
         this.dificultad = dificultad;
         misAnimaciones = new Animaciones();
-
+        fondo = new Fondo(new Texture(Constantes.IMAGEN_FONDO),moverFondo,0,rotaFondo);
     }
 
     public PantallaJuego() {
@@ -83,9 +84,9 @@ public class PantallaJuego implements Screen {
             jugador = new Nave(new Vector2(10,200),misAnimaciones.getNaveTexturas().get(0),3,5);
             moverFondo=0;
             rotaFondo = Constantes.ROTA_FONDO;
-            fondo = new Fondo(new Texture(Constantes.IMAGEN_FONDO),moverFondo,0,rotaFondo);
+
             moverFondoAux=fondo.getFondo().getWidth();
-            fondoAux = new Fondo ( new Texture(Constantes.IMAGEN_FONDO),moverFondoAux,0,rotaFondo);
+          //  fondoAux = new Fondo ( new Texture(Constantes.IMAGEN_FONDO),moverFondoAux,0,rotaFondo);
             marcianos = new Array<>();
 
             constMarcianosBoss= Constantes.MARCIANOS_PARA_BOSS*dificultad;

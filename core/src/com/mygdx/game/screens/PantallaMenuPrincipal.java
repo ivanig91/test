@@ -103,7 +103,7 @@ public class PantallaMenuPrincipal implements Screen {
             }
         });
 
-        VisLabel aboutLabel = new VisLabel("Demo libGDX\n(c) Iván Villarreal 2020");
+        VisLabel aboutLabel = new VisLabel("Disparas con A, te mueves con las flechas\n(c) Iván Villarreal 2020");
 
         // Añade filas a la tabla y añade los componentes
         Drawable covid= new Drawable() {

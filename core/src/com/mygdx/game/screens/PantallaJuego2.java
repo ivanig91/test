@@ -335,6 +335,9 @@ public class PantallaJuego2 extends PantallaJuego implements Screen {
                     elBoss.quitarVida();
                 }
             }
+            if(elBoss.rect.overlaps(jugador.rect)){
+                jugador.setVidas(0);
+            }
 
         }
         contaVidas=jugador.getVidas();
