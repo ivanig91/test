@@ -110,6 +110,7 @@ public class PantallaMenuPrincipal implements Screen {
             @Override
             public void draw(Batch batch, float x, float y, float width, float height) {
                 batch.draw(new Texture("backgrounds/covid2.png"),x,y);
+                //comentario
             }
 
             @Override
